@@ -1,8 +1,6 @@
 package pageobject.selenide;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,6 +11,8 @@ import java.util.List;
 @Feature("Duck sorting")
 public class CatalogTest extends TestBase {
 
+
+    @Severity(SeverityLevel.BLOCKER)
     @Test
     @Description("Method compares the list of products after clicking the button")
     public void sortByNameFullComparison() {

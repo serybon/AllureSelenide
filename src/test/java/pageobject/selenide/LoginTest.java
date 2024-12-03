@@ -1,33 +1,36 @@
 package pageobject.selenide;
 
-import io.qameta.allure.Allure;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 @Epic("Authorization and Authentication")
 @Feature("UI Login form")
 public class LoginTest extends TestBase {
 
+    @Severity(SeverityLevel.BLOCKER)
     @Description("This test attempts to login with correct email and incorrect password and validates error message appears.")
-    @Test
+    @Test(priority = 0)
     public void loginWithCorrectEmailAndWrongPassword() {
         LoginPage.loginWithCredentials("mail5514@mail.com", "111111");
         LoginPage.validateErrorMessageIsDisplayed();
         LoginPage.validateErrorMessageText("Wrong password or the account is disabled, or does not exist");
     }
+
+    @Severity(SeverityLevel.CRITICAL)
     @Description("This test attempts to login with correct email and password and validates error message appears.")
-    @Test
-    public void loginWithCorrectCredentials() {
-        LoginPage.loginWithCredentials("mail8164@mail.com", "bB123123");
-        LoginPage.validateErrorMessageIsDisplayed();
-        LoginPage.validateErrorMessageText("Wrong password or the account is disabled, or does not exist");
+    @Test(priority = 1)
+    public void loginWithCorrectCredentials() throws IOException {
+        LoginPage.loginWithCredentials("mail8164@mail.com", "bb123123");
+        LoginPage.validateSuccessMessageIsDisplayed();
+        LoginPage.validateSuccessMessageText("You are now logged in as John Johnson.");
     }
 
+    @Severity(SeverityLevel.CRITICAL)
     @Description("This test tries to create a new account and validates successful message.")
-    @Test
-    public void successfulRegistration() {
+    @Test(priority = 5)
+    public void successfulRegistration() throws IOException {
         LoginPage.clickLinkForNewCustomers();
         LoginPage.inputDataInAllFields("Vasil", "Vasilevich", "Nemiga street 6-5",
                 "220020", "Minsk", LoginPage.generateEmail(), "+123456789", "b123123",
@@ -36,6 +39,7 @@ public class LoginTest extends TestBase {
         LoginPage.clickCreateAccountButton();
         LoginPage.validateSuccessMessageIsDisplayed();
         LoginPage.validateSuccessMessageText("Your customer account has been created.");
+
     }
 
 }
