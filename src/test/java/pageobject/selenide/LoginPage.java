@@ -3,8 +3,6 @@ package pageobject.selenide;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,29 +12,27 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage extends TestBase {
 
-    String email;
-
-    private static By emailInput = By.name("email");
-    private static By passwordInput = By.name("password");
-    private static By loginButton = By.name("login");
-    private static By errorMessageLabel = By.cssSelector(".notice.errors");
-    private static By successMessageLabel = By.cssSelector(".notice.success");
+    private static final By emailInput = By.name("email");
+    private static final By passwordInput = By.name("password");
+    private static final By loginButton = By.name("login");
+    private static final By errorMessageLabel = By.cssSelector(".notice.errors");
+    private static final By successMessageLabel = By.cssSelector(".notice.success");
 
 
     //Registration locators
-    private static By linkForNewCustomers = By.cssSelector("#box-account-login " + "a[href = 'https://litecart.stqa.ru/en/create_account']");
-    private static By firstNameInput = By.name("firstname");
-    private static By lastNameInput = By.name("lastname");
-    private static By addressInput = By.name("address1");
-    private static By postcodeInput = By.name("postcode");
-    private static By cityInput = By.name("city");
-    private static By selectCountryDropdown = By.name("country_code");
-    private static By emailRegInput = By.cssSelector("input[type='email'][name='email']");
-    private static By phoneInput = By.name("phone");
-    private static By passwordRegInput = By.cssSelector("input[type='password'][name='password']");
-    private static By confirmedPasswordInput = By.name("confirmed_password");
-    private static By createAccountButton = By.name("create_account");
-    private static By newsLetterCheckbox = By.name("newsletter");
+    private static final By linkForNewCustomers = By.cssSelector("#box-account-login " + "a[href = 'https://litecart.stqa.ru/en/create_account']");
+    private static final By firstNameInput = By.name("firstname");
+    private static final By lastNameInput = By.name("lastname");
+    private static final By addressInput = By.name("address1");
+    private static final By postcodeInput = By.name("postcode");
+    private static final By cityInput = By.name("city");
+    private static final By selectCountryDropdown = By.name("country_code");
+    private static final By emailRegInput = By.cssSelector("input[type='email'][name='email']");
+    private static final By phoneInput = By.name("phone");
+    private static final By passwordRegInput = By.cssSelector("input[type='password'][name='password']");
+    private static final By confirmedPasswordInput = By.name("confirmed_password");
+    private static final By createAccountButton = By.cssSelector("#create-account button");
+    private static final By newsLetterCheckbox = By.name("newsletter");
     //
 
     //Registration methods
@@ -55,8 +51,7 @@ public class LoginPage extends TestBase {
 
     @Step("Selects a country from the drop-down list.")
     public static void selectCountryDropdown(String country) {
-        Select dropdown = new Select($(selectCountryDropdown));
-        dropdown.selectByVisibleText(country);
+        $(selectCountryDropdown).selectOption(country);
     }
 
     @Step("Enter the data in the input field for email.")
@@ -137,7 +132,7 @@ public class LoginPage extends TestBase {
     }
 
     @Step("Receive the entered password in the field.")
-    public static String getEnteredPassword(WebDriver driver) {
+    public static String getEnteredPassword() {
         System.out.println($(passwordRegInput).getText() + "ПАРОЛЬ");
         return ($(passwordRegInput)).getText();
     }

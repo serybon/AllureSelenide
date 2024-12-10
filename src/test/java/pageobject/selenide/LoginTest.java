@@ -22,7 +22,7 @@ public class LoginTest extends TestBase {
     @Description("This test attempts to login with correct email and password and validates error message appears.")
     @Test(priority = 1)
     public void loginWithCorrectCredentials() throws IOException {
-        LoginPage.loginWithCredentials("mail8164@mail.com", "bb123123");
+        LoginPage.loginWithCredentials("mail8164@mail.com", "b123123");
         LoginPage.validateSuccessMessageIsDisplayed();
         LoginPage.validateSuccessMessageText("You are now logged in as John Johnson.");
     }
