@@ -20,7 +20,7 @@ public class LoginTest extends TestBase {
 
     @Severity(SeverityLevel.CRITICAL)
     @Description("This test attempts to login with correct email and password and validates error message appears.")
-    @Test(priority = 1)
+    @Test(description = "Log in with correct credentials.")
     public void loginWithCorrectCredentials() throws IOException {
         LoginPage.loginWithCredentials("mail8164@mail.com", "b123123");
         LoginPage.validateSuccessMessageIsDisplayed();
@@ -29,7 +29,7 @@ public class LoginTest extends TestBase {
 
     @Severity(SeverityLevel.CRITICAL)
     @Description("This test tries to create a new account and validates successful message.")
-    @Test(priority = 5)
+    @Test(description = "Attempt to register successfully.")
     public void successfulRegistration() throws IOException {
         LoginPage.clickLinkForNewCustomers();
         LoginPage.inputDataInAllFields("Vasil", "Vasilevich", "Nemiga street 6-5",

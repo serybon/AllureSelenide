@@ -13,8 +13,8 @@ public class CatalogTest extends TestBase {
 
 
     @Severity(SeverityLevel.BLOCKER)
-    @Test
     @Description("Method compares the list of products after clicking the button")
+    @Test(description = "Sort by name and then check results")
     public void sortByNameFullComparison() {
         CatalogPage.clickLinkRubberDuckNavigationPanel();
         List<String> listBefore = CatalogPage.getListOfTitles();

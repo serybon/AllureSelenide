@@ -9,7 +9,7 @@ public class CartTest extends TestBase {
 
     @Severity(SeverityLevel.TRIVIAL)
     @Description("This test verifies that there are no items in the cart.")
-    @Test
+    @Test(description = "Check that cart is empty.")
     public void checkEmptyCartTest() {
         CartPage.clickCart();
         CartPage.validateEmptyCartMessageText("There are no items in your cart.");
@@ -17,7 +17,7 @@ public class CartTest extends TestBase {
 
     @Severity(SeverityLevel.CRITICAL)
     @Description("This test checks that the cart changes the quantity in the header when the add to cart button is clicked.")
-    @Test
+    @Test(description = "Add one purple duck to the cart")
     public void addOnePurpleDuckToCart() {
         CartPage.clickPurpleDuckLink();
         CartPage.clickAddToCartButton();
