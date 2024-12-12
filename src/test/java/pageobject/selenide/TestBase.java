@@ -33,14 +33,14 @@ public class TestBase {
     public void methodSetup() {
         String browser = System.getProperty("browser", "chrome");
         String platform = System.getProperty("os", "windows");
-        WebDriver driverFirefox = new FirefoxDriver();
+
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setBrowserName(browser);
 
-        switch (platform){
-            case "windows": caps.setPlatform(Platform.WINDOWS);
-            case "mac": caps.setPlatform(Platform.MAC);
-            case "linux": caps.setPlatform(Platform.LINUX);
+        switch (platform) {
+            case "windows" -> caps.setPlatform(Platform.WINDOWS);
+            case "mac" -> caps.setPlatform(Platform.MAC);
+            case "linux" -> caps.setPlatform(Platform.LINUX);
         }
 
         Configuration.remote = "http://localhost:4444/wd/hub";
