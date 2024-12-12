@@ -9,7 +9,9 @@ import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.bidi.log.LogLevel;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -31,7 +33,7 @@ public class TestBase {
     public void methodSetup() {
         String browser = System.getProperty("browser", "chrome");
         String platform = System.getProperty("os", "windows");
-
+        WebDriver driverFirefox = new FirefoxDriver();
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setBrowserName(browser);
 
