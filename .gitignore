@@ -65,3 +65,6 @@ lib/
 .allure
 /*/allure-results/
 
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/.gitignore
+/.idea/encodings.xml
