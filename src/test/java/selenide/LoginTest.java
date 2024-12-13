@@ -1,7 +1,8 @@
-package pageobject.selenide;
+package selenide;
 
 import io.qameta.allure.*;
 import org.testng.annotations.Test;
+import pageobject.pages.LoginPage;
 
 import java.io.IOException;
 

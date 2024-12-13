@@ -1,4 +1,4 @@
-package pageobject.selenide;
+package pageobject.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;

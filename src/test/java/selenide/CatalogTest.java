@@ -1,8 +1,9 @@
-package pageobject.selenide;
+package selenide;
 
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageobject.pages.CatalogPage;
 
 import java.util.Collections;
 import java.util.List;

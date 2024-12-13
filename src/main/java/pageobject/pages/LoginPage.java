@@ -1,10 +1,8 @@
-package pageobject.selenide;
+package pageobject.pages;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,16 +10,13 @@ import java.io.IOException;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
-public class LoginPage extends TestBase {
-
-    String email;
+public class LoginPage {
 
     private static By emailInput = By.name("email");
     private static By passwordInput = By.name("password");
     private static By loginButton = By.name("login");
     private static By errorMessageLabel = By.cssSelector(".notice.errors");
     private static By successMessageLabel = By.cssSelector(".notice.success");
-
 
     //Registration locators
     private static By linkForNewCustomers = By.cssSelector("#box-account-login " + "a[href = 'https://litecart.stqa.ru/en/create_account']");
@@ -51,12 +46,12 @@ public class LoginPage extends TestBase {
         $(phoneInput).sendKeys(phone);
         $(passwordRegInput).sendKeys(password);
         $(confirmedPasswordInput).sendKeys(password_confirmed);
+        $(newsLetterCheckbox).click();
     }
 
     @Step("Selects a country from the drop-down list.")
     public static void selectCountryDropdown(String country) {
-        Select dropdown = new Select($(selectCountryDropdown));
-        dropdown.selectByVisibleText(country);
+        $(selectCountryDropdown).selectOption(country);
     }
 
     @Step("Enter the data in the input field for email.")
@@ -126,8 +121,8 @@ public class LoginPage extends TestBase {
     public static String generateEmail() {
         String randomNumber = String.valueOf((int) (Math.floor(Math.random() * 10000)));
         String newEmail = "mail" + randomNumber + "@mail.com";
+        WriteToFile(newEmail, "b123123");
         return newEmail;
-
     }
 
     @Step("Receive the entered e-mail address in the field.")
@@ -135,12 +130,5 @@ public class LoginPage extends TestBase {
         System.out.println($(emailRegInput).getText() + "ПОЧТА");
         return $(emailRegInput).toString();
     }
-
-    @Step("Receive the entered password in the field.")
-    public static String getEnteredPassword(WebDriver driver) {
-        System.out.println($(passwordRegInput).getText() + "ПАРОЛЬ");
-        return ($(passwordRegInput)).getText();
-    }
-
 
 }

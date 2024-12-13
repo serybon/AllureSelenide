@@ -1,23 +1,18 @@
-package pageobject.selenide;
+package pageobject;
 
 import com.codeborne.selenide.Screenshots;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-//import com.epam.reportportal.service.ReportPortal;
 import com.google.common.io.Files;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.bidi.log.LogLevel;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import java.io.*;
-import java.util.Base64;
-import java.util.Calendar;
-import java.util.Date;
 
 import static com.codeborne.selenide.Selenide.screenshot;
 
